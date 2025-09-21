@@ -1,38 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+    <title>Frontend Mentor | Space tourism website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "space-blue": "#0B0D17",
+              "space-lavender": "#D0D6F9",
+              "space-white": "#FFFFFF",
+            },
+            fontFamily: {
+              bellefair: ["Bellefair", "serif"],
+              barlow: ["Barlow Condensed", "sans-serif"],
+            },
+            backgroundImage: {
+              "destination-desktop": "url('/destination/background-destination-desktop.jpg')",
+              "destination-tablet": "url('/destination/background-destination-tablet.jpg')",
+              "destination-mobile": "url('/destination/background-destination-mobile.jpg')",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-space-blue bg-destination-desktop bg-cover bg-no-repeat text-space-white font-bellefair">
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center py-6 px-8 md:py-0 md:px-12 md:mt-8">
+      <div class="flex items-center">
+        <img src="./public/shared/logo.svg" />
+      </div>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Space tourism website</title>
-</head>
-<body>
+      <div class="hidden md:flex items-center h-24 bg-white/5 backdrop-blur-2xl px-12">
+        <ul class="flex space-x-12 font-barlow text-sm tracking-widest">
+          <li><a href="#" class="py-9 border-b-2 border-space-white">00 HOME</a></li>
+          <li><a href="#" class="py-9 border-b-2 border-space-white">01 DESTINATION</a></li>
+          <li><a href="#" class="py-9">02 CREW</a></li>
+          <li><a href="#" class="py-9">03 TECHNOLOGY</a></li>
+        </ul>
+      </div>
 
-  00 Home
-  01 Destination
-  02 Crew
-  03 Technology
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button id="menu-btn" type="button">
+          <img src="./public/shared/icon-hamburger.svg" width="24" height="21" viewBox="0 0 24 21" class="fill-space-white" />
+        </button>
+      </div>
+    </nav>
 
-  01 Pick your destination
+    <main class="container mx-auto px-6 py-8 md:py-16">
+      <h1 class="font-barlow text-base md:text-xl lg:text-2xl tracking-widest text-center md:text-left uppercase mb-8 md:mb-12">
+        <span class="text-space-white/25 mr-4">01</span> Pick your destination
+      </h1>
 
-  Moon
-  Mars
-  Europa
-  Titan
+      <div class="flex flex-col lg:flex-row items-center justify-between">
+        <div class="w-1/2 md:w-2/5 lg:w-2/5 mb-8 lg:mb-0 flex justify-center">
+          <img src="/destination/image-europa.webp" alt="Europa" class="w-44 h-44 md:w-64 md:h-64 lg:w-80 lg:h-80" />
+        </div>
 
-  Europa
+        <div class="w-full lg:w-1/2 text-center lg:text-left">
+          <div class="flex justify-center lg:justify-start space-x-6 md:space-x-8 mb-6 md:mb-8 font-barlow text-sm md:text-base tracking-widest">
+            <a href="destination-moon.html" class="pb-2 text-space-lavender hover:border-b-2 hover:border-space-white/50">MOON</a>
+            <a href="destination-mars.html" class="pb-2 text-space-lavender hover:border-b-2 hover:border-space-white/50">MARS</a>
+            <a href="destination-europa.html" class="pb-2 border-b-2 border-space-white">EUROPA</a>
+            <a href="destination-titan.html" class="pb-2 text-space-lavender hover:border-b-2 hover:border-space-white/50">TITAN</a>
+          </div>
 
-  The smallest of the four Galilean moons orbiting Jupiter, Europa is a 
-  winter lover’s dream. With an icy surface, it’s perfect for a bit of 
-  ice skating, curling, hockey, or simple relaxation in your snug 
-  wintery cabin.
+          <h2 class="text-5xl md:text-6xl lg:text-7xl uppercase mb-4">Europa</h2>
 
-  Avg. distance
-  628 mil. km
+          <p
+            class="text-space-lavender font-barlow text-sm md:text-base lg:text-lg leading-6 md:leading-7 lg:leading-8 max-w-md mx-auto lg:mx-0 mb-8 md:mb-12"
+          >
+            The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover's dream. With an icy surface, it's perfect for a bit of
+            ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.
+          </p>
 
-  Est. travel time
-  3 years
-</body>
+          <div class="border-t border-space-white/20 pt-6 md:pt-8">
+            <div class="flex flex-col md:flex-row justify-center lg:justify-start space-y-8 md:space-y-0 md:space-x-16">
+              <div>
+                <p class="font-barlow text-sm tracking-widest text-space-lavender mb-2">AVG. DISTANCE</p>
+                <p class="text-2xl md:text-3xl uppercase">628 mil. km</p>
+              </div>
+              <div>
+                <p class="font-barlow text-sm tracking-widest text-space-lavender mb-2">EST. TRAVEL TIME</p>
+                <p class="text-2xl md:text-3xl uppercase">3 years</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
