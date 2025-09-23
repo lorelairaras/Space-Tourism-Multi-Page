@@ -1,27 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+    <title>Frontend Mentor | Space tourism website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "space-blue": "#0B0D17",
+              "space-lavender": "#D0D6F9",
+              "space-white": "#FFFFFF",
+            },
+            fontFamily: {
+              bellefair: ["Bellefair", "serif"],
+              barlow: ["Barlow Condensed", "sans-serif"],
+            },
+            backgroundImage: {
+              "destination-desktop": "url('/crew/background-crew-desktop.jpg')",
+              "destination-tablet": "url('/crew/background-crew-tablet.jpg')",
+              "destination-mobile": "url('/crew/background-crew-mobile.jpg')",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-space-blue bg-destination-desktop bg-cover bg-no-repeat text-space-white font-bellefair">
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center py-6 px-8 md:py-0 md:px-12 md:mt-8">
+      <div class="flex items-center">
+        <img src="./public/shared/logo.svg" />
+      </div>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Space tourism website</title>
-</head>
-<body>
+      <div class="hidden md:flex items-center h-24 bg-white/5 backdrop-blur-2xl px-12">
+        <ul class="flex space-x-12 font-barlow text-sm tracking-widest">
+          <li><a href="#" class="py-9 border-b-2 border-space-white">00 HOME</a></li>
+          <li><a href="#" class="py-9 border-b-2 border-space-white">01 DESTINATION</a></li>
+          <li><a href="#" class="py-9">02 CREW</a></li>
+          <li><a href="#" class="py-9">03 TECHNOLOGY</a></li>
+        </ul>
+      </div>
 
-  00 Home
-  01 Destination
-  02 Crew
-  03 Technology
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button id="menu-btn" type="button">
+          <img src="./public/shared/icon-hamburger.svg" width="24" height="21" viewBox="0 0 24 21" class="fill-space-white" />
+        </button>
+      </div>
+    </nav>
+    <main class="container mx-auto px-6 py-8 md:py-16">
+      <h1 class="font-barlow text-base md:text-xl lg:text-2xl tracking-widest text-center md:text-left uppercase mb-8 md:mb-12">
+        <span class="text-space-white/25 mr-4">02</span> Meet your crew
+      </h1>
 
-  02 Meet your crew
+      <div class="flex flex-col lg:flex-row items-center justify-between">
+        <div class="w-full lg:w-2/5 text-center lg:text-left order-2 lg:order-1">
+          <div class="mb-4 md:mb-6">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl uppercase text-space-white/50 mb-2">Commander</h2>
+            <h3 class="text-3xl md:text-4xl lg:text-5xl uppercase mb-4">Douglas Hurley</h3>
+          </div>
 
-  Commander
-  Douglas Hurley
+          <p
+            class="text-space-lavender font-barlow text-sm md:text-base lg:text-lg leading-6 md:leading-7 lg:leading-8 max-w-md mx-auto lg:mx-0 mb-8 md:mb-12"
+          >
+            Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third
+            time as commander of Crew Dragon Demo-2.
+          </p>
 
-  Douglas Gerald Hurley is an American engineer, former Marine Corps pilot 
-  and former NASA astronaut. He launched into space for the third time as 
-  commander of Crew Dragon Demo-2.
-</body>
+          <div class="flex justify-center lg:justify-start space-x-4 mb-8 lg:mb-0">
+            <a href="crew-commander.html" class="w-3 h-3 rounded-full bg-space-white"></a>
+            <a href="crew-pilot.html" class="w-3 h-3 rounded-full bg-space-white/20 hover:bg-space-white/50"></a>
+            <a href="crew-specialist.html" class="w-3 h-3 rounded-full bg-space-white/20 hover:bg-space-white/50"></a>
+            <a href="crew-engineer.html" class="w-3 h-3 rounded-full bg-space-white/20 hover:bg-space-white/50"></a>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-3/5 mb-8 lg:mb-0 flex justify-center lg:justify-end order-1 lg:order-2">
+          <img src="./public/crew/image-douglas-hurley.webp" alt="Douglas Hurley" class="w-64 h-80 md:w-96 md:h-[28rem] lg:w-[28rem] lg:h-[32rem]" />
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
