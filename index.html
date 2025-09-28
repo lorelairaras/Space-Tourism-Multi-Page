@@ -9,80 +9,107 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
     />
-    <style>
-      body {
-        background-image: url("./public/home/background-home-desktop.jpg");
-        background-size: cover;
-        background-position: center;
-        min-height: 100vh;
-        font-family: "Barlow", sans-serif;
-      }
-      .font-condensed {
-        font-family: "Barlow Condensed", sans-serif;
-      }
-      .font-serif {
-        font-family: "Bellefair", serif;
-      }
-      @media (max-width: 768px) {
-        body {
-          background-image: url("./public/home/background-home-tablet.jpg");
-        }
-      }
-      @media (max-width: 640px) {
-        body {
-          background-image: url("./public/home/background-home-mobile.jpg");
-        }
-      }
-    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              bellefair: ["Bellefair", "serif"],
+              barlow: ["Barlow", "sans-serif"],
+              "barlow-condensed": ["Barlow Condensed", "sans-serif"],
+            },
+            backgroundImage: {
+              "home-desktop": "url('./public/home/background-home-desktop.jpg')",
+              "home-tablet": "url('./public/home/background-home-tablet.jpg')",
+              "home-mobile": "url('./public/home/background-home-mobile.jpg')",
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body class="text-white overflow-x-hidden">
-    <!-- Navigation -->
-    <nav class="flex justify-between items-center pt-10 px-6 md:px-14">
+  <body class="text-white lg:overflow-hidden bg-home-desktop md:bg-home-tablet bg-home-mobile bg-cover bg-center min-h-screen font-barlow">
+    <nav class="flex justify-between items-center pt-10 px-6 md:px-14 relative z-50">
       <div class="flex items-center">
         <img src="./public/shared/logo.svg" alt="Space Tourism Logo" class="h-10 md:h-12" />
       </div>
+
       <div class="hidden md:flex items-center bg-white/5 backdrop-blur-lg pl-12 pr-10 py-8 gap-12">
-        <a href="index.html" class="border-b-2 border-white pb-8"><span class="font-bold mr-2">00</span> HOME</a>
-        <a href="destination-moon.html" class="hover:border-b-2 hover:border-white/50 pb-8"><span class="font-bold mr-2">01</span> DESTINATION</a>
-        <a href="crew-commander.html" class="hover:border-b-2 hover:border-white/50 pb-8"><span class="font-bold mr-2">02</span> CREW</a>
-        <a href="technology-vehicle.html" class="hover:border-b-2 hover:border-white/50 pb-8"><span class="font-bold mr-2">03</span> TECHNOLOGY</a>
+        <a href="index.html" class="border-b-2 border-white pb-8 font-barlow-condensed"><span class="font-bold mr-2">00</span> HOME</a>
+        <a href="destination-moon.html" class="hover:border-b-2 hover:border-white/50 pb-8 font-barlow-condensed"
+          ><span class="font-bold mr-2">01</span> DESTINATION</a
+        >
+        <a href="crew-commander.html" class="hover:border-b-2 hover:border-white/50 pb-8 font-barlow-condensed"
+          ><span class="font-bold mr-2">02</span> CREW</a
+        >
+        <a href="technology-vehicle.html" class="hover:border-b-2 hover:border-white/50 pb-8 font-barlow-condensed"
+          ><span class="font-bold mr-2">03</span> TECHNOLOGY</a
+        >
       </div>
       <div class="md:hidden">
-        <img src="./public/shared/icon-hamburger.svg" alt="Menu" class="h-6" />
+        <button id="menu-btn" type="button" class="relative z-50 w-6 h-6">
+          <img id="menu-icon" src="./public/shared/icon-hamburger.svg" alt="Menu" class="absolute top-0 left-0 transition-opacity duration-300" />
+          <img
+            id="close-icon"
+            src="./public/shared/icon-close.svg"
+            alt="Close"
+            class="absolute top-0 left-0 opacity-0 transition-opacity duration-300"
+          />
+        </button>
       </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 mt-16 md:mt-32">
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 md:hidden opacity-0 invisible transition-all duration-300"></div>
+
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-[#0B0D17]/95 backdrop-blur-lg z-50 md:hidden opacity-0 invisible transition-all duration-300 flex flex-col"
+    >
+      <div class="flex justify-between items-center pt-10 px-6">
+        <img src="./public/shared/logo.svg" alt="Space Tourism Logo" class="h-10" />
+        <button id="close-menu-btn" type="button" class="relative w-6 h-6">
+          <img src="./public/shared/icon-close.svg" alt="Close" class="w-6 h-6" />
+        </button>
+      </div>
+      <ul class="flex flex-col space-y-8 font-barlow-condensed text-base tracking-widest px-6 mt-16">
+        <li>
+          <a href="index.html" class="block py-3"><span class="font-bold mr-3">00</span> HOME</a>
+        </li>
+        <li>
+          <a href="destination-moon.html" class="block py-3"><span class="font-bold mr-3">01</span> DESTINATION</a>
+        </li>
+        <li>
+          <a href="crew-commander.html" class="block py-3"><span class="font-bold mr-3">02</span> CREW</a>
+        </li>
+        <li>
+          <a href="technology-vehicle.html" class="block py-3"><span class="font-bold mr-3">03</span> TECHNOLOGY</a>
+        </li>
+      </ul>
+    </div>
+
+    <main class="container mx-auto px-6 md:px-20 mt-16 md:mt-32">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
         <div class="text-center lg:text-left">
-          <h1 class="font-condensed text-light-blue text-lg md:text-xl tracking-widest mb-4 md:mb-6">SO, YOU WANT TO TRAVEL TO</h1>
-          <h2 class="font-serif text-[80px] md:text-[150px]">SPACE</h2>
-          <p class="text-light-blue max-w-md mx-auto lg:mx-0 text-base md:text-lg leading-relaxed">
-            Let's face it: If you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit
+          <h1 class="font-barlow-condensed text-lg md:text-xl tracking-[4px] mb-4 md:mb-6 text-[#D0D6F9]">SO, YOU WANT TO TRAVEL TO</h1>
+          <h2 class="font-bellefair text-[80px] md:text-[150px] leading-[100px] md:leading-[150px]">SPACE</h2>
+          <p class="text-[#D0D6F9] max-w-md mx-auto lg:mx-0 text-base md:text-lg leading-7">
+            Let's face it: if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit
             back, and relax because we'll give you a truly out of this world experience!
           </p>
         </div>
         <div class="flex justify-center lg:justify-end">
-          <button
-            class="font-serif w-48 h-48 md:w-60 md:h-60 bg-white text-dark text-xl md:text-2xl rounded-full hover:outline hover:outline-[50px] md:hover:outline-[88px] hover:outline-white/10 transition-all"
-          >
-            EXPLORE
-          </button>
+          <div class="relative group">
+            <button
+              class="font-bellefair w-48 h-48 md:w-60 md:h-60 bg-white text-black text-xl md:text-2xl rounded-full relative z-10 transition-transform duration-300 group-hover:scale-110"
+            >
+              EXPLORE
+            </button>
+            <div class="absolute inset-0 rounded-full bg-white/10 scale-0 transition-transform duration-500 group-hover:scale-150 z-0"></div>
+          </div>
         </div>
       </div>
     </main>
 
-    <script>
-      // Simple navigation functionality
-      document.querySelector("button").addEventListener("click", function () {
-        window.location.href = "destination-moon.html";
-      });
-
-      // Mobile menu toggle (simplified version)
-      document.querySelector('nav img[alt="Menu"]').addEventListener("click", function () {
-        alert("Mobile menu would open here. In a real implementation, this would show a slide-out menu.");
-      });
-    </script>
+    <script src="./src/main.js"></script>
   </body>
 </html>
