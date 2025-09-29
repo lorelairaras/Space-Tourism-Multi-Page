@@ -1,83 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
-    <title>Frontend Mentor | Space tourism website</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "space-blue": "#0B0D17",
-              "space-lavender": "#D0D6F9",
-              "space-white": "#FFFFFF",
-            },
-            fontFamily: {
-              bellefair: ["Bellefair", "serif"],
-              barlow: ["Barlow Condensed", "sans-serif"],
-            },
-            backgroundImage: {
-              "destination-desktop": "url('./public/destination/background-destination-desktop.jpg')",
-              "destination-tablet": "url('./public/destination/background-destination-tablet.jpg')",
-              "destination-mobile": "url('./public/destination/background-destination-mobile.jpg')",
-            },
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+  />
+  <title>Frontend Mentor | Space tourism website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "space-blue": "#0B0D17",
+            "space-lavender": "#D0D6F9",
+            "space-white": "#FFFFFF",
+          },
+          fontFamily: {
+            bellefair: ["Bellefair", "serif"],
+            barlow: ["Barlow", "sans-serif"],
+            "barlow-condensed": ["Barlow Condensed", "sans-serif"],
+          },
+          backgroundImage: {
+            "destination-desktop":
+              "url('./public/destination/background-destination-desktop.jpg')",
+            "destination-tablet":
+              "url('./public/destination/background-destination-tablet.jpg')",
+            "destination-mobile":
+              "url('./public/destination/background-destination-mobile.jpg')",
           },
         },
-      };
-    </script>
-  </head>
-  <body class="min-h-screen bg-space-blue bg-destination-desktop bg-cover bg-no-repeat text-space-white font-bellefair overflow-hidden">
-    <nav class="flex justify-between items-center py-6 px-8 md:py-0 md:px-12 md:mt-8">
+      },
+    };
+  </script>
+</head>
+
+  <body class="min-h-screen bg-space-blue lg:bg-destination-desktop md:bg-destination-tablet bg-destination-mobile bg-cover bg-no-repeat text-space-white font-bellefair ">
+    <nav class="flex justify-between items-center pt-10 px-6 md:px-14 relative z-50">
       <div class="flex items-center">
-        <img src="./public/shared/logo.svg" />
+        <img src="./public/shared/logo.svg" alt="Space Tourism Logo" class="h-10 md:h-12" />
       </div>
 
-      <div class="hidden md:flex items-center h-24 bg-white/5 backdrop-blur-2xl px-12">
-        <ul class="flex space-x-12 font-barlow text-sm tracking-widest">
-          <li><a href="index.html" class="py-9">00 HOME</a></li>
-          <li><a href="destination-moon.html" class="py-9 border-b-2 border-space-white">01 DESTINATION</a></li>
-          <li><a href="crew-commander.html" class="py-9">02 CREW</a></li>
-          <li><a href="technology-vehicle.html" class="py-9">03 TECHNOLOGY</a></li>
-        </ul>
-      </div>
+      <div class="hidden lg:block relative flex-grow max-w-[600px] h-px bg-white/25 ml-16 -mr-8 z-10"></div>
 
+      <div class="hidden md:flex items-center bg-white/5 backdrop-blur-[40px] pl-12 pr-10 py-8 gap-12">
+        <a href="index.html" class="hover:border-b-2 hover:border-white/50 pb-8 font-barlow-condensed tracking-widest"
+          ><span class="font-bold mr-2">00</span> HOME</a
+        >
+        <a href="destination-moon.html" class="border-b-2 border-white pb-8 font-barlow-condensed tracking-widest"
+          ><span class="font-bold mr-2">01</span> DESTINATION</a
+        >
+        <a href="crew-commander.html" class="hover:border-b-2 hover:border-white/50 pb-8 font-barlow-condensed tracking-widest"
+          ><span class="font-bold mr-2">02</span> CREW</a
+        >
+        <a href="technology-vehicle.html" class="hover:border-b-2 hover:border-white/50 pb-8 font-barlow-condensed tracking-widest"
+          ><span class="font-bold mr-2">03</span> TECHNOLOGY</a
+        >
+      </div>
+ 
       <div class="md:hidden">
-        <button id="menu-btn" type="button">
-          <img src="./public/shared/icon-hamburger.svg" width="24" height="21" viewBox="0 0 24 21" class="fill-space-white" />
+        <button id="menu-btn" type="button" class="relative z-50 w-6 h-6">
+          <img id="menu-icon" src="./public/shared/icon-hamburger.svg" alt="Menu" class="absolute top-0 left-0 transition-opacity duration-300" />
+          <img
+            id="close-icon"
+            src="./public/shared/icon-close.svg"
+            alt="Close"
+            class="absolute top-0 left-0 opacity-0 transition-opacity duration-300"
+          />
         </button>
       </div>
     </nav>
 
-    <main class="container mx-auto px-6 py-8 md:py-16">
-      <h1 class="font-barlow text-base md:text-xl lg:text-2xl tracking-widest text-center md:text-left uppercase mb-8 md:mb-12">
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 md:hidden opacity-0 invisible transition-all duration-300"></div>
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-[#0B0D17]/95 backdrop-blur-lg z-50 md:hidden opacity-0 invisible transition-all duration-300 flex flex-col"
+    >
+      <div class="flex justify-between items-center pt-10 px-6">
+        <img src="./public/shared/logo.svg" alt="Space Tourism Logo" class="h-10" />
+        <button id="close-menu-btn" type="button" class="relative w-6 h-6">
+          <img src="./public/shared/icon-close.svg" alt="Close" class="w-6 h-6" />
+        </button>
+      </div>
+      <ul class="flex flex-col space-y-8 font-barlow-condensed text-base tracking-widest px-6 mt-16">
+        <li>
+          <a href="index.html" class="block py-3"><span class="font-bold mr-3">00</span> HOME</a>
+        </li>
+        <li>
+          <a href="destination-moon.html" class="block py-3"><span class="font-bold mr-3">01</span> DESTINATION</a>
+        </li>
+        <li>
+          <a href="crew-commander.html" class="block py-3"><span class="font-bold mr-3">02</span> CREW</a>
+        </li>
+        <li>
+          <a href="technology-vehicle.html" class="block py-3"><span class="font-bold mr-3">03</span> TECHNOLOGY</a>
+        </li>
+      </ul>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-6 lg:px-0 py-8 md:py-16 flex flex-col">
+      <h1 class="font-barlow text-base md:text-xl lg:text-2xl tracking-widest text-center md:text-left uppercase mb-8 md:mb-16">
         <span class="text-space-white/25 mr-4">01</span> Pick your destination
       </h1>
-
-      <div class="flex flex-col lg:flex-row items-center justify-between">
-        <div class="w-1/2 md:w-2/5 lg:w-2/5 mb-8 lg:mb-0 flex justify-center">
+      <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-20">
+        <div class="flex justify-center">
           <img src="./public/destination/image-mars.webp" alt="Mars" class="w-44 h-44 md:w-64 md:h-64 lg:w-80 lg:h-80" />
         </div>
-
-        <div class="w-full lg:w-1/2 text-center lg:text-left">
+        <div class="w-full lg:max-w-md text-center lg:text-left">
           <div class="flex justify-center lg:justify-start space-x-6 md:space-x-8 mb-6 md:mb-8 font-barlow text-sm md:text-base tracking-widest">
             <a href="destination-moon.html" class="pb-2 text-space-lavender hover:border-b-2 hover:border-space-white/50">MOON</a>
             <a href="destination-mars.html" class="pb-2 border-b-2 border-space-white">MARS</a>
             <a href="destination-europa.html" class="pb-2 text-space-lavender hover:border-b-2 hover:border-space-white/50">EUROPA</a>
             <a href="destination-titan.html" class="pb-2 text-space-lavender hover:border-b-2 hover:border-space-white/50">TITAN</a>
           </div>
-
           <h2 class="text-5xl md:text-6xl lg:text-7xl uppercase mb-4">Mars</h2>
-
-          <p
-            class="text-space-lavender font-barlow text-sm md:text-base lg:text-lg leading-6 md:leading-7 lg:leading-8 max-w-md mx-auto lg:mx-0 mb-8 md:mb-12"
-          >
-            Don't forget to pack your hiking boots. You'll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It's
-            two and a half times the size of Everest!
+          <p class="text-space-lavender font-barlow text-sm md:text-base lg:text-lg leading-6 md:leading-7 lg:leading-8 mx-auto lg:mx-0 mb-8 md:mb-12">
+            Don't forget to pack your hiking boots. You'll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It's two and a half times the size of Everest!
           </p>
-
           <div class="border-t border-space-white/20 pt-6 md:pt-8">
             <div class="flex flex-col md:flex-row justify-center lg:justify-start space-y-8 md:space-y-0 md:space-x-16">
               <div>
@@ -93,5 +132,7 @@
         </div>
       </div>
     </main>
+    <script src="./src/main.js"></script>
+  </body>
   </body>
 </html>
